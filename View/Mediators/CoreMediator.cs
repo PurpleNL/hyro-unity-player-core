@@ -70,7 +70,7 @@
             switch (notification.Name)
             {
                 case CoreNote.REQUEST_START_COROUTINE:
-                    OnRequestStartCoroutine(notification.Body as RequestStartCoroutineVO);
+                    OnRequestStartCoroutine(notification.Body);
 
                     break;
                 case CoreNote.REQUEST_STOP_COROUTINE:
@@ -134,9 +134,19 @@
         /// Attempts to start a coroutine
         /// </summary>
         /// <param name="requestStartCoroutineVO"></param>
-        private void OnRequestStartCoroutine(RequestStartCoroutineVO requestStartCoroutineVO)
+        private void OnRequestStartCoroutine(object notificationBody)
         {
-            (m_viewComponent as CoreBehaviour).StartCoroutine(requestStartCoroutineVO.coroutine);
+            IEnumerator coroutine = null;
+            if (notificationBody is RequestStartCoroutineVO)
+            {
+                coroutine = (notificationBody as RequestStartCoroutineVO).coroutine;
+            }
+            if (notificationBody is IEnumerator)
+            {
+                coroutine = notificationBody as IEnumerator;
+            }
+
+            (m_viewComponent as CoreBehaviour).StartCoroutine(coroutine);
         }
 
         /// <summary>
