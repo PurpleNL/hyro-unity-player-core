@@ -89,19 +89,23 @@ namespace UnityPureMVC.Core
         /// <returns></returns>
         internal static IEnumerator AlphaTween(this CanvasGroup cg, float from, float to, float time, float delay)
         {
-            cg.alpha = 0;
+            cg.alpha = from;
             yield return new WaitForSeconds(delay);
 
             float elapsed = 0.0f;
-            cg.gameObject.SetActive(true);
 
-            while (elapsed < time)
+            if (cg != null)
             {
-                elapsed += Time.deltaTime;
-                cg.alpha = Mathf.Lerp(from, to, elapsed / time);
-                yield return new WaitForEndOfFrame();
+                cg.gameObject.SetActive(true);
+
+                while (elapsed < time)
+                {
+                    elapsed += Time.deltaTime;
+                    cg.alpha = Mathf.Lerp(from, to, elapsed / time);
+                    yield return new WaitForEndOfFrame();
+                }
+                cg.alpha = to;
             }
-            cg.alpha = to;
         }
     }
 }
