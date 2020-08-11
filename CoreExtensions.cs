@@ -37,6 +37,19 @@ namespace UnityPureMVC.Core
         }
 
         /// <summary>
+        /// Transform SetParent overload which allows you to set first sibling also
+        /// </summary>
+        /// <param name="transform"></param>
+        /// <param name="parent"></param>
+        /// <param name="worldPositionStays"></param>
+        /// <param name="firstSibling"></param>
+        public static void SetParent(this Transform transform, Transform parent, bool worldPositionStays, bool firstSibling)
+        {
+            transform.SetParent(parent, worldPositionStays);
+            if (firstSibling) transform.SetAsFirstSibling();
+        }
+
+        /// <summary>
         /// AddListener to pointer events
         /// </summary>
         /// <param name="trigger"></param>
