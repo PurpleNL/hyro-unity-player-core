@@ -1,5 +1,5 @@
-﻿using UnityPureMVC.Core.View.Components;
-using UnityEngine.Events;
+﻿using UnityEngine.Events;
+using UnityPureMVC.Core.View.Components;
 
 namespace UnityPureMVC.Core.Model.VO
 {

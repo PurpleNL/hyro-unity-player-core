@@ -1,6 +1,6 @@
-﻿using UnityPureMVC.Core.Libraries.UnityLib.Utilities.Logging;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityPureMVC.Core.Libraries.UnityLib.Utilities.Logging;
 
 namespace UnityPureMVC.Core.Libraries.UnityLib.Utilities
 {
@@ -106,69 +106,69 @@ namespace UnityPureMVC.Core.Libraries.UnityLib.Utilities
         }
 
 #if UNITY_EDITOR
-	[UnityEditor.MenuItem("Assets/Bake Prefab Lightmaps")]
-	static void GenerateLightmapInfo()
-	{
-		if (UnityEditor.Lightmapping.giWorkflowMode != UnityEditor.Lightmapping.GIWorkflowMode.OnDemand)
-		{
-			Debug.LogError("ExtractLightmapData requires that you have baked you lightmaps and Auto mode is disabled.");
-			return;
-		}
-		//UnityEditor.Lightmapping.Bake();
+        [UnityEditor.MenuItem("Assets/Bake Prefab Lightmaps")]
+        static void GenerateLightmapInfo()
+        {
+            if (UnityEditor.Lightmapping.giWorkflowMode != UnityEditor.Lightmapping.GIWorkflowMode.OnDemand)
+            {
+                Debug.LogError("ExtractLightmapData requires that you have baked you lightmaps and Auto mode is disabled.");
+                return;
+            }
+            //UnityEditor.Lightmapping.Bake();
 
-		PrefabLightmapData[] prefabs = FindObjectsOfType<PrefabLightmapData>();
+            PrefabLightmapData[] prefabs = FindObjectsOfType<PrefabLightmapData>();
 
-		foreach (var instance in prefabs)
-		{
-			var gameObject = instance.gameObject;
-			var rendererInfos = new List<RendererInfo>();
-			var lightmaps = new List<Texture2D>();
-			var dirmaps = new List<Texture2D>();
+            foreach (var instance in prefabs)
+            {
+                var gameObject = instance.gameObject;
+                var rendererInfos = new List<RendererInfo>();
+                var lightmaps = new List<Texture2D>();
+                var dirmaps = new List<Texture2D>();
 
 
-			GenerateLightmapInfo(gameObject, rendererInfos, lightmaps, dirmaps);
+                GenerateLightmapInfo(gameObject, rendererInfos, lightmaps, dirmaps);
 
-			instance.m_RendererInfo = rendererInfos.ToArray();
-			instance.m_Lightmaps = lightmaps.ToArray();
-			instance.m_Dirmaps = dirmaps.ToArray();
+                instance.m_RendererInfo = rendererInfos.ToArray();
+                instance.m_Lightmaps = lightmaps.ToArray();
+                instance.m_Dirmaps = dirmaps.ToArray();
 
-			var targetPrefab = UnityEditor.PrefabUtility.GetPrefabParent(gameObject) as GameObject;
-			if (targetPrefab != null)
-			{
-				//UnityEditor.Prefab
-				UnityEditor.PrefabUtility.ReplacePrefab(gameObject, targetPrefab);
-			}
-		}
-	}
+                var targetPrefab = UnityEditor.PrefabUtility.GetPrefabParent(gameObject) as GameObject;
+                if (targetPrefab != null)
+                {
+                    //UnityEditor.Prefab
+                    UnityEditor.PrefabUtility.ReplacePrefab(gameObject, targetPrefab);
+                }
+            }
+        }
 
-	static void GenerateLightmapInfo(GameObject root, List<RendererInfo> rendererInfos, List<Texture2D> lightmaps, List<Texture2D> dirmaps)
-	{
-		var renderers = root.GetComponentsInChildren<MeshRenderer>();
-		foreach (MeshRenderer renderer in renderers)
-		{
-			if (renderer.lightmapIndex != -1)
-			{
-				RendererInfo info = new RendererInfo
-				{
-					renderer = renderer,
-					lightmapOffsetScale = renderer.lightmapScaleOffset
-				};
+        static void GenerateLightmapInfo(GameObject root, List<RendererInfo> rendererInfos, List<Texture2D> lightmaps, List<Texture2D> dirmaps)
+        {
+            var renderers = root.GetComponentsInChildren<MeshRenderer>();
+            foreach (MeshRenderer renderer in renderers)
+            {
+                if (renderer.lightmapIndex != -1)
+                {
+                    RendererInfo info = new RendererInfo
+                    {
+                        renderer = renderer,
+                        lightmapOffsetScale = renderer.lightmapScaleOffset
+                    };
 
-				Texture2D lightmap = LightmapSettings.lightmaps[renderer.lightmapIndex].lightmapColor;
-				Texture2D dirmap = LightmapSettings.lightmaps[renderer.lightmapIndex].lightmapDir;
+                    Texture2D lightmap = LightmapSettings.lightmaps[renderer.lightmapIndex].lightmapColor;
+                    Texture2D dirmap = LightmapSettings.lightmaps[renderer.lightmapIndex].lightmapDir;
 
-				info.lightmapIndex = lightmaps.IndexOf(lightmap);
-				if (info.lightmapIndex == -1)
-				{
-					info.lightmapIndex = lightmaps.Count;
-					lightmaps.Add(lightmap);
-					dirmaps.Add(dirmap);
-				}
+                    info.lightmapIndex = lightmaps.IndexOf(lightmap);
+                    if (info.lightmapIndex == -1)
+                    {
+                        info.lightmapIndex = lightmaps.Count;
+                        lightmaps.Add(lightmap);
+                        dirmaps.Add(dirmap);
+                    }
 
-				rendererInfos.Add(info);
-			}
-		}
-	}
+                    rendererInfos.Add(info);
+                }
+            }
+        }
 #endif
 
     }

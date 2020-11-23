@@ -14,7 +14,7 @@ namespace UnityPureMVC.Core.Libraries.UnityLib.Utilities.UI
 
         private void Start()
         {
-            if(elementToDrag == null)
+            if (elementToDrag == null)
             {
                 elementToDrag = GetComponent<RectTransform>();
             }
@@ -35,7 +35,7 @@ namespace UnityPureMVC.Core.Libraries.UnityLib.Utilities.UI
             // Get transform corners (Clockwise from bottom left) 
             elementToDrag.GetWorldCorners(corners);
 
-            if (corners[2].x - delta.x < Screen.width && corners[1].x -  delta.x > 0)
+            if (corners[2].x - delta.x < Screen.width && corners[1].x - delta.x > 0)
             {
                 newPosition.x = elementToDrag.position.x - delta.x;
             }

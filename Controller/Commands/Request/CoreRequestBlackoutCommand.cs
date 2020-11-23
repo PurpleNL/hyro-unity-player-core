@@ -3,13 +3,13 @@
     using Model.VO;
     using PureMVC.Interfaces;
     using PureMVC.Patterns.Command;
-    using UnityPureMVC.Core.Controller.Notes;
-    using UnityPureMVC.Core.Libraries.UnityLib.Utilities.Logging;
-    using UnityPureMVC.Core.Model.Proxies;
     using System.Collections;
     using UnityEngine;
     using UnityEngine.Events;
     using UnityEngine.UI;
+    using UnityPureMVC.Core.Controller.Notes;
+    using UnityPureMVC.Core.Libraries.UnityLib.Utilities.Logging;
+    using UnityPureMVC.Core.Model.Proxies;
 
     internal sealed class CoreRequestBlackoutCommand : SimpleCommand
     {

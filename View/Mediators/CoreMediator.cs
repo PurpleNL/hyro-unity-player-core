@@ -1,14 +1,14 @@
 ﻿namespace UnityPureMVC.Core.View.Mediators
 {
     using PureMVC.Interfaces;
-    using UnityPureMVC.Core.Controller.Notes;
-    using UnityPureMVC.Core.Libraries.UnityLib.Utilities.Logging;
-    using UnityPureMVC.Core.Model.VO;
-    using UnityPureMVC.Core.View.Components;
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.EventSystems;
+    using UnityPureMVC.Core.Controller.Notes;
+    using UnityPureMVC.Core.Libraries.UnityLib.Utilities.Logging;
+    using UnityPureMVC.Core.Model.VO;
+    using UnityPureMVC.Core.View.Components;
 
     internal sealed class CoreMediator : CoreBaseMediator
     {

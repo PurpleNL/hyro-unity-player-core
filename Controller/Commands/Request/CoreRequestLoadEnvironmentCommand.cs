@@ -2,10 +2,10 @@
 {
     using PureMVC.Interfaces;
     using PureMVC.Patterns.Command;
+    using UnityEngine.SceneManagement;
     using UnityPureMVC.Core.Controller.Notes;
     using UnityPureMVC.Core.Libraries.UnityLib.Utilities.Logging;
     using UnityPureMVC.Core.Model.Proxies;
-    using UnityEngine.SceneManagement;
 
     internal sealed class CoreRequestLoadEnvironmentCommand : SimpleCommand
     {

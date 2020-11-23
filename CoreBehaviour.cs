@@ -12,11 +12,11 @@ namespace UnityPureMVC.Core
 {
     using PureMVC.Interfaces;
     using PureMVC.Patterns.Facade;
+    using System;
+    using UnityEngine;
     using UnityPureMVC.Core.Controller.Commands;
     using UnityPureMVC.Core.Controller.Notes;
     using UnityPureMVC.Core.Libraries.UnityLib.Utilities.Logging;
-    using System;
-    using UnityEngine;
 
     internal class CoreBehaviour : MonoBehaviour
     {

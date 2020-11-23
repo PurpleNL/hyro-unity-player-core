@@ -3,9 +3,9 @@
     using Model.Proxies;
     using PureMVC.Interfaces;
     using PureMVC.Patterns.Mediator;
+    using System.Collections.Generic;
     using UnityPureMVC.Core.Controller.Notes;
     using UnityPureMVC.Core.Model.VO;
-    using System.Collections.Generic;
 
     internal abstract class CoreBaseMediator : Mediator
     {

@@ -1,9 +1,9 @@
 ﻿namespace UnityPureMVC.Core.Model.Proxies
 {
     using PureMVC.Patterns.Proxy;
+    using UnityEngine;
     using UnityPureMVC.Core.Libraries.UnityLib.Utilities.Logging;
     using UnityPureMVC.Core.Model.VO;
-    using UnityEngine;
 
     internal sealed class CoreDataProxy : Proxy
     {

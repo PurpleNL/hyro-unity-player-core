@@ -1,6 +1,6 @@
-﻿using UnityPureMVC.Core.Libraries.UnityLib.Utilities.Logging;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityPureMVC.Core.Libraries.UnityLib.Utilities.Logging;
 
 namespace UnityPureMVC.Core.View.Components
 {
