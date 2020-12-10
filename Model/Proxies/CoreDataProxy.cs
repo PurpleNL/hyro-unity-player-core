@@ -40,7 +40,7 @@
             CoreBehaviour coreBehaviour = GameObject.FindObjectOfType<CoreBehaviour>();
             if (coreBehaviour != null)
             {
-                dataVO.version = coreBehaviour.appVersion;
+                dataVO.version = Application.version;
                 dataVO.defaultEnvironment = coreBehaviour.DefaultEnvironmentScene;
                 dataVO.isDebug = coreBehaviour.debug;
             }
