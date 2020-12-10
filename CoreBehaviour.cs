@@ -29,9 +29,6 @@ namespace UnityPureMVC.Core
         internal delegate void CoreButtonEvent();
         internal event CoreButtonEvent OnBackButtonPressed;
 
-        // Updae app version from Main scene in editor
-        public string appVersion = "1.0.0";
-
         // Set internal so it can be set in Editor
         public string DefaultEnvironmentScene = "Environment";
 
